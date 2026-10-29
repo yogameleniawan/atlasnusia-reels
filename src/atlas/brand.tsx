@@ -83,10 +83,10 @@ export const BUMPER_SECONDS = 4;
  */
 export type FrameShape = "arch" | "polaroid" | "woven" | "round";
 const BOX: Record<FrameShape, { left: number; top: number; w: number; h: number }> = {
-  arch: { left: 170, top: 230, w: 740, h: 900 },
-  polaroid: { left: 110, top: 250, w: 860, h: 880 },
-  woven: { left: 56, top: 300, w: 968, h: 800 },
-  round: { left: 150, top: 290, w: 780, h: 780 },
+  arch: { left: 190, top: 210, w: 700, h: 880 },
+  polaroid: { left: 130, top: 240, w: 820, h: 840 },
+  woven: { left: 56, top: 280, w: 968, h: 780 },
+  round: { left: 170, top: 270, w: 740, h: 740 },
 };
 
 export const PhotoCard: React.FC<{ src: string; credit: string; shape: FrameShape; t0: number; t1: number; drift?: 1 | -1; focus?: string }> = ({ src, credit, shape, t0, t1, drift = 1, focus = "50% 50%" }) => {
@@ -104,7 +104,7 @@ export const PhotoCard: React.FC<{ src: string; credit: string; shape: FrameShap
     const e = spring(u / 0.8),
       m = expo(u / 0.7);
     pcTf = `translateY(${((1 - e) * 260).toFixed(1)}px)`;
-    pfClip = `inset(${((1 - m) * 100).toFixed(2)}% 0 0 0 round 370px 370px 34px 34px)`;
+    pfClip = `inset(${((1 - m) * 100).toFixed(2)}% 0 0 0 round 350px 350px 34px 34px)`;
     ringTf = `scale(${(0.9 + 0.1 * expo((u - 0.2) / 0.7)).toFixed(3)})`;
     ringOp = ramp(u, 0.2, 0.6);
   } else if (shape === "polaroid") {
@@ -126,7 +126,7 @@ export const PhotoCard: React.FC<{ src: string; credit: string; shape: FrameShap
   const shine = lerp(-120, 120, ramp(t, t0 + 0.6, t0 + 1.4));
   const pc: React.CSSProperties = { position: "absolute", left: B.left, top: B.top, width: B.w, height: B.h, transform: pcTf, clipPath: pcClip };
   const pf: React.CSSProperties = { position: "absolute", inset: 0, overflow: "hidden", background: "#16140f", clipPath: pfClip };
-  if (shape === "arch") pf.borderRadius = "370px 370px 34px 34px";
+  if (shape === "arch") pf.borderRadius = "350px 350px 34px 34px";
   if (shape === "polaroid") {
     Object.assign(pc, { background: "#f6efe0", borderRadius: 8, boxShadow: "0 40px 80px -24px rgba(0,0,0,.85), inset 0 0 0 1px rgba(0,0,0,.08)" });
     Object.assign(pf, { inset: "34px 34px 150px 34px", borderRadius: 3 });
@@ -149,7 +149,7 @@ export const PhotoCard: React.FC<{ src: string; credit: string; shape: FrameShap
   return (
     <div style={{ position: "absolute", inset: 0, opacity: 1 - out, transform: `translateY(${(-out * 120).toFixed(1)}px) scale(${(1 - 0.08 * out).toFixed(3)})`, transformOrigin: "50% 40%", fontFamily: FONT }}>
       <div style={pc}>
-        {shape === "arch" ? <div style={{ position: "absolute", inset: -26, border: "3px solid #e2c28a", borderRadius: "396px 396px 52px 52px", transformOrigin: "50% 100%", transform: ringTf, opacity: ringOp }} /> : null}
+        {shape === "arch" ? <div style={{ position: "absolute", inset: -26, border: "3px solid #e2c28a", borderRadius: "376px 376px 52px 52px", transformOrigin: "50% 100%", transform: ringTf, opacity: ringOp }} /> : null}
         {shape === "round" ? (
           <div
             style={{

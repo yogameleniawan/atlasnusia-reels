@@ -7,7 +7,9 @@ import { MapLook, MapWorld, useMap } from "../../atlas/MapStage";
 import { biggest, centroid, kmPerDeg, LL, MapData, outer } from "../../atlas/map";
 import { CompassHud, GlowBorder, MapLettering, Measure, PlaceLabels, Pulses, Scrim, useSurface } from "../../atlas/overlay";
 import { Card3D, headOf, Pin, ShapeIll } from "../../atlas/pins";
-import { HookLines, Kinetic } from "../../atlas/kinetic";
+import { Kinetic } from "../../atlas/kinetic";
+import { HookStack } from "../../atlas/hook";
+import { buildSubs, SubPhrase, Subtitles } from "../../atlas/subtitle";
 import { Bumper, BUMPER_SECONDS, PhotoCard, Watermark } from "../../atlas/brand";
 import { SfxCue, SfxHit } from "../../atlas/sfx";
 import MAP_JSON from "./map.json";
@@ -149,7 +151,7 @@ const MapOverlays: React.FC = () => {
   const xy = (p: number[]): [number, number] => [p[0], p[1]];
   return (
     <>
-      <PlaceLabels show={ramp(t, 1.0, 1.8) * (1 - photoOn)} yMin={t < 3.3 ? 1080 : 300} yMax={factOn || ctaOn ? 1120 : 1880} kabFade={1 - win(t, 7.2, 11.3, 0.4)} />
+      <PlaceLabels show={ramp(t, 1.0, 1.8) * (1 - photoOn)} yMin={t < 3.3 ? 1080 : 300} yMax={factOn || ctaOn ? 960 : 1400} kabFade={1 - win(t, 7.2, 11.3, 0.4)} />
       {/* Sumatera Utara: garis provinsi menyala saat terangkat */}
       <GlowBorder rings={outer(MAP.focus, 40)} y={focusY} draw={ramp(t, 3.3, 4.8)} opacity={win(t, 3.3, 7.2, 0.4)} line="#fff1cf" glow={C.gold} />
       {/* Danau Toba & Samosir */}
@@ -187,7 +189,7 @@ const MapOverlays: React.FC = () => {
   );
 };
 
-const Stage: React.FC = () => {
+const Stage: React.FC<{ subs: SubPhrase[] }> = ({ subs }) => {
   const t = useT();
   const photoOn = win(t, 20.4, 33.6, 0.45);
   return (
@@ -200,30 +202,34 @@ const Stage: React.FC = () => {
         <CompassHud />
       </MapWorld>
       <Watermark until={END} />
-      <HookLines
+      {/* hook gaya "stack": baris meluncur bergantian kiri-kanan, kata kunci berongga lalu terisi emas */}
+      <HookStack
         out={2.9}
         lines={[
-          { text: "Ada *danau* di atas pulau…", at: 0 },
-          { text: "…dan *pulaunya* ada di tengah danau.", at: 0.85 },
-          { text: "Di mana itu?", at: 1.85, big: true },
+          { text: "Ada *danau*", at: 0 },
+          { text: "di atas pulau…", at: 0.4 },
+          { text: "…dan *pulaunya*", at: 0.95 },
+          { text: "di tengah danau.", at: 1.3 },
         ]}
+        question={{ text: "Di mana itu?", at: 1.9 }}
       />
       {/* fakta: kata-katanya bergerak sesuai arti, posisi rata kiri/kanan/tengah bergantian */}
-      <Kinetic mode="act" t0={8.7} t1={11.3} top={1190} step={0.075} text="Sekitar [74000] tahun lalu, Gunung Toba meletus{burst} *dahsyat.* Kawahnya runtuh,{fall} lalu terisi air.{fill}" />
-      <Kinetic mode="act" t0={11.6} t1={14.3} top={1190} step={0.08} text="Panjangnya{stretch} ±[100] km, lebarnya{wide} ±[30] km, dan dalamnya{sink} *lebih* *dari* *500* *meter.*" />
-      <Kinetic mode="act" t0={14.6} t1={17.3} top={1190} align="right" text="Di tengahnya ada *Pulau* *Samosir,*{pop} luasnya ±[630] km², hampir seluas Singapura.{swap}" />
-      <Kinetic mode="act" t0={17.6} t1={20.4} top={1190} align="center" text="Di puncak Samosir ada *Danau* *Sidihoni.*{rise} Danau{wave} di atas pulau,{rise} di tengah danau.{wave}" />
+      <Kinetic mode="act" t0={8.7} t1={11.3} top={1020} step={0.075} text="Sekitar [74000] tahun lalu, Gunung Toba meletus{burst} *dahsyat.* Kawahnya runtuh,{fall} lalu terisi air.{fill}" />
+      <Kinetic mode="act" t0={11.6} t1={14.3} top={1020} step={0.08} text="Panjangnya{stretch} ±[100] km, lebarnya{wide} ±[30] km, dan dalamnya{sink} *lebih* *dari* *500* *meter.*" />
+      <Kinetic mode="act" t0={14.6} t1={17.3} top={1020} align="right" text="Di tengahnya ada *Pulau* *Samosir,*{pop} luasnya ±[630] km², hampir seluas Singapura.{swap}" />
+      <Kinetic mode="act" t0={17.6} t1={20.4} top={1020} align="center" text="Di puncak Samosir ada *Danau* *Sidihoni.*{rise} Danau{wave} di atas pulau,{rise} di tengah danau.{wave}" />
       {/* foto: bingkai & gerak teks beda tiap foto */}
       <PhotoCard src={PH.sigale.src} credit={PH.sigale.credit} shape="arch" t0={20.6} t1={23.8} focus="50% 10%" />
-      <Kinetic mode="type" t0={21.05} t1={23.8} top={1250} size={56} weight={500} lineHeight={1.36} text="Di Samosir ada *Sigale-gale,* boneka kayu seukuran manusia yang dulu ditarikan saat upacara kematian." />
+      <Kinetic mode="type" t0={21.05} t1={23.8} top={1215} size={52} weight={500} lineHeight={1.32} text="Di Samosir ada *Sigale-gale,* boneka kayu seukuran manusia yang dulu ditarikan saat upacara kematian." />
       <PhotoCard src={PH.siallagan.src} credit={PH.siallagan.credit} shape="polaroid" t0={23.8} t1={27.0} drift={-1} focus="50% 35%" />
-      <Kinetic mode="drop" t0={24.25} t1={27.0} top={1250} size={56} weight={500} lineHeight={1.36} text="Ini gerbang *Huta* *Siallagan,* kampung Batak berpagar batu. Di dalamnya ada kursi batu raja berumur lebih dari [200] tahun." />
+      <Kinetic mode="drop" t0={24.25} t1={27.0} top={1215} size={52} weight={500} lineHeight={1.32} text="Ini gerbang *Huta* *Siallagan,* kampung Batak berpagar batu. Di dalamnya ada kursi batu raja berumur lebih dari [200] tahun." />
       <PhotoCard src={PH.ulos.src} credit={PH.ulos.credit} shape="woven" t0={27.0} t1={30.2} />
-      <Kinetic mode="wipe" t0={27.45} t1={30.2} top={1250} size={56} weight={500} lineHeight={1.36} text="*Ulos* ditenun dengan tangan, lalu diberikan sebagai tanda kasih sayang dan hormat." />
+      <Kinetic mode="wipe" t0={27.45} t1={30.2} top={1215} size={52} weight={500} lineHeight={1.32} text="*Ulos* ditenun dengan tangan, lalu diberikan sebagai tanda kasih sayang dan hormat." />
       <PhotoCard src={PH.arsik.src} credit={PH.arsik.credit} shape="round" t0={30.2} t1={33.4} drift={-1} focus="50% 45%" />
-      <Kinetic mode="pop" t0={30.65} t1={33.4} top={1250} size={56} weight={500} lineHeight={1.36} text="*Arsik,* ikan mas berbumbu andaliman, disajikan utuh dari kepala sampai ekor saat acara adat." />
+      <Kinetic mode="pop" t0={30.65} t1={33.4} top={1215} size={52} weight={500} lineHeight={1.32} text="*Arsik,* ikan mas berbumbu andaliman, disajikan utuh dari kepala sampai ekor saat acara adat." />
       {/* ajakan: teks saja, huruf bergelombang */}
-      <Kinetic mode="wave" t0={33.95} t1={99} top={1180} size={96} weight={600} lineHeight={1.12} text="Daerahmu mau dibahas? *Tulis* *di* *komentar.*" />
+      <Kinetic mode="wave" t0={33.95} t1={99} top={1000} size={96} weight={600} lineHeight={1.12} text="Daerahmu mau dibahas? *Tulis* *di* *komentar.*" />
+      <Subtitles subs={subs} />
       <Bumper t0={END} />
     </AbsoluteFill>
   );
@@ -233,11 +239,12 @@ const Stage: React.FC = () => {
 const TL = timeline(SCENES, VOICE, BUMPER_SECONDS);
 const DESIGN = timeline(SCENES, { chunks: [], sync: null }, BUMPER_SECONDS);
 
-const withTime = (toDesign: (f: number) => number): React.FC => {
+const SUBS = buildSubs(SCENES, VOICE, TL);
+const withTime = (toDesign: (f: number) => number, subs: SubPhrase[]): React.FC => {
   const C1: React.FC = () => (
     <FontGate>
       <TimeProvider toDesign={toDesign}>
-        <Stage />
+        <Stage subs={subs} />
       </TimeProvider>
     </FontGate>
   );
@@ -247,8 +254,8 @@ const withTime = (toDesign: (f: number) => number): React.FC => {
 export const ATLAS01 = {
   id: "ATLAS-01",
   title: "Danau Toba",
-  component: withTime(TL.toDesign),
-  cover: withTime(DESIGN.toDesign),
+  component: withTime(TL.toDesign, SUBS),
+  cover: withTime(DESIGN.toDesign, []),
   coverFrames: DESIGN.totalFrames,
   totalFrames: TL.totalFrames,
   voice: TL.track,

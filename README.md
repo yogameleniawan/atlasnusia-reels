@@ -37,6 +37,8 @@ Video ngikutin voice. Tanpa voice pun video tetap jalan (durasi desain).
 - Durasi tiap scene ngikut potongan voice-nya, animasi dipercepat/diperlambat di dalam scene (tetap nyambung).
   Voice yang jauh lebih pendek: animasi maks 1,4× lebih cepat, sisanya tanpa suara.
 - Bumper logo 4 detik otomatis di akhir (tanpa voice).
+- Subtitle berjalan otomatis dari naskah (per frasa, kata yang diucapkan disorot emas), timing dari sync.
+  Tanpa voice timing-nya perkiraan. Cover tanpa subtitle.
 - Backsound: `public/backsound/xxx.mp3` (default) atau `public/voice/atlas-01-backsound.mp3` (khusus). Volume 0,3.
 - Ubah teks: edit `naskah-dubbing.md` (jumlah bagian = jumlah scene di `Video.tsx`), generate ulang, sync lagi.
 
@@ -70,7 +72,9 @@ src/atlas/              mesin Atlasnusia
   map.ts, MapStage.tsx  data peta, kamera, lempeng 3D (three.js)
   overlay.tsx           label kota/kabupaten, border menyala, garis ukur, tulisan di peta, kompas, scrim
   pins.tsx              pin emas memantul + kartu 3D + ilustrasi siluet wilayah
-  kinetic.tsx           teks kinetik (mode act/pop/drop/wipe/blur/type/wave + efek per kata) + hook
+  kinetic.tsx           teks kinetik (mode act/pop/drop/wipe/blur/type/wave + efek per kata) + HookLines
+  hook.tsx              HookStack (gaya hook ATLAS-01); gaya hook diganti tiap episode
+  subtitle.tsx          subtitle berjalan per frasa (buildSubs + Subtitles)
   brand.tsx             simbol, watermark, bumper, bingkai foto (arch/polaroid/woven/round)
   voice.tsx, sfx.tsx    timeline voice, backsound, SFX
 src/videos/atlas-XX/    satu episode: Video.tsx, map.json, photos.json, naskah-dubbing.md, voice.ts
