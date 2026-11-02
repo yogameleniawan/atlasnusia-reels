@@ -58,7 +58,8 @@ Hook → **Ajak** → isi (peta, fakta, foto) → ajakan penutup → bumper.
   sebelum episode ini), `unlock` (provinsi episode ini), `prod` (yang sedang diproduksi).
 - Animasi cerita ditulis di "waktu cerita" tanpa scene Ajak; `Video.tsx` menyisipkan Ajak di `AJAK_AT` selama
   `AJAK_LEN` dan menggeser sisanya (`story()` / `S()`). Cover diambil dari waktu cerita, jadi frame 165 tetap pin + kartu.
-- Ajakan penutup sebut progresnya juga ("Satu terbuka, 37 lagi").
+- Ajakan penutup sebut progresnya juga ("Satu terbuka, 37 lagi") + "Cek peta yang sudah terbuka di *atlasnusia.com*". Bumper juga menampilkan atlasnusia.com.
+- Teks di stage nggak boleh lewat y 1410 (`SAFE_BOTTOM` di `kinetic.tsx`, subtitle mulai 1440). `Kinetic` otomatis mengecilkan huruf kalau kepanjangan, tapi lebih baik teksnya dipendekkan. Di naskah tulis "atlasnusia dot com" (biar TTS benar); subtitle otomatis jadi "atlasnusia.com".
 
 ## Episode baru (ATLAS-XX)
 
@@ -98,7 +99,7 @@ src/videos/atlas-XX/    satu episode: Video.tsx, map.json, photos.json, naskah-d
 
 | ID | Judul | Durasi |
 |---|---|---|
-| ATLAS-01 | Danau Toba: danau di atas pulau di tengah danau | ±46,5 dtk (tanpa voice) |
+| ATLAS-01 | Danau Toba: danau di atas pulau di tengah danau | ±48 dtk (tanpa voice) |
 
 ## Sumber data & lisensi
 

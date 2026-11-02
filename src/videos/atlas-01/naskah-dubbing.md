@@ -39,5 +39,5 @@ Ulos ditenun dengan tangan, lalu diberikan sebagai tanda kasih sayang dan hormat
 **[0:35–0:39] Arsik**
 Kalau lapar, coba arsik. Ikan mas berbumbu andaliman, disajikan utuh dari kepala sampai ekor saat acara adat.
 
-**[0:39–0:42] Ajakan**
-Sumatera Utara sudah terbuka, tinggal tiga puluh tujuh lagi. Daerahmu mau dibuka berikutnya? Tulis di kolom komentar, kita buka bareng.
+**[0:39–0:44] Ajakan**
+Sumatera Utara sudah terbuka, tinggal tiga puluh tujuh lagi. Daerahmu mau dibuka berikutnya? Tulis di kolom komentar, kita buka bareng. Peta yang sudah terbuka bisa kamu cek di atlasnusia dot com.

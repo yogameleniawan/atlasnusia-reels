@@ -48,14 +48,14 @@ const STORY_SCENES: DesignScene[] = [
   { name: "Huta Siallagan", from: 23.8, to: 27.0 },
   { name: "Ulos", from: 27.0, to: 30.2 },
   { name: "Arsik", from: 30.2, to: 33.6 },
-  { name: "Ajakan", from: 33.6, to: 37.0 },
+  { name: "Ajakan", from: 33.6, to: 38.8 },
 ];
 export const SCENES: DesignScene[] = [
   STORY_SCENES[0],
   { name: "Ajak", from: AJAK_AT, to: AJAK_AT + AJAK_LEN },
   ...STORY_SCENES.slice(1).map((s) => ({ ...s, from: S(s.from), to: S(s.to) })),
 ];
-const END = S(37.0); // bumper mulai
+const END = S(38.8); // bumper mulai
 
 const LOOK: MapLook = {
   camera: [
@@ -119,6 +119,7 @@ const STORY_CUES: SfxCue[] = [
   { t: 27.15, s: "swoosh" },
   { t: 30.4, s: "pickup", vol: 0.8 },
   { t: 33.8, s: "join" },
+  { t: 36.45, s: "ding", vol: 0.6 },
   { t: 38.81, s: "achievement" },
 ];
 const AJAK_UNLOCK = AJAK_AT + 1.4; // Sumatera Utara terbuka di peta progres
@@ -244,15 +245,17 @@ const Story: React.FC = () => {
       <Kinetic mode="act" t0={17.6} t1={20.4} top={1020} align="center" text="Di puncak Samosir ada *Danau* *Sidihoni.*{rise} Danau{wave} di atas pulau,{rise} di tengah danau.{wave}" />
       {/* foto: bingkai & gerak teks beda tiap foto */}
       <PhotoCard src={PH.sigale.src} credit={PH.sigale.credit} shape="arch" t0={20.6} t1={23.8} focus="50% 10%" />
-      <Kinetic mode="type" t0={21.05} t1={23.8} top={1215} size={52} weight={500} lineHeight={1.32} text="Di Samosir ada *Sigale-gale,* boneka kayu seukuran manusia yang dulu ditarikan saat upacara kematian." />
+      <Kinetic mode="type" t0={21.05} t1={23.8} top={1200} size={48} weight={500} lineHeight={1.32} text="Di Samosir ada *Sigale-gale,* boneka kayu seukuran manusia yang dulu ditarikan saat upacara kematian." />
       <PhotoCard src={PH.siallagan.src} credit={PH.siallagan.credit} shape="polaroid" t0={23.8} t1={27.0} drift={-1} focus="50% 35%" />
-      <Kinetic mode="drop" t0={24.25} t1={27.0} top={1215} size={52} weight={500} lineHeight={1.32} text="Ini gerbang *Huta* *Siallagan,* kampung Batak berpagar batu. Di dalamnya ada kursi batu raja berumur lebih dari [200] tahun." />
+      <Kinetic mode="drop" t0={24.25} t1={27.0} top={1200} size={48} weight={500} lineHeight={1.32} text="Gerbang *Huta* *Siallagan,* kampung Batak berpagar batu. Di dalamnya ada kursi batu raja berumur [200]+ tahun." />
       <PhotoCard src={PH.ulos.src} credit={PH.ulos.credit} shape="woven" t0={27.0} t1={30.2} />
-      <Kinetic mode="wipe" t0={27.45} t1={30.2} top={1215} size={52} weight={500} lineHeight={1.32} text="*Ulos* ditenun dengan tangan, lalu diberikan sebagai tanda kasih sayang dan hormat." />
+      <Kinetic mode="wipe" t0={27.45} t1={30.2} top={1200} size={48} weight={500} lineHeight={1.32} text="*Ulos* ditenun dengan tangan, lalu diberikan sebagai tanda kasih sayang dan hormat." />
       <PhotoCard src={PH.arsik.src} credit={PH.arsik.credit} shape="round" t0={30.2} t1={33.4} drift={-1} focus="50% 45%" />
-      <Kinetic mode="pop" t0={30.65} t1={33.4} top={1215} size={52} weight={500} lineHeight={1.32} text="*Arsik,* ikan mas berbumbu andaliman, disajikan utuh dari kepala sampai ekor saat acara adat." />
+      <Kinetic mode="pop" t0={30.65} t1={33.4} top={1200} size={48} weight={500} lineHeight={1.32} text="*Arsik,* ikan mas berbumbu andaliman, disajikan utuh dari kepala sampai ekor saat acara adat." />
       {/* ajakan penutup: teks saja, huruf bergelombang */}
-      <Kinetic mode="wave" t0={33.95} t1={99} top={960} size={92} weight={600} lineHeight={1.12} text="Satu terbuka, *37* lagi. Daerahmu *berikutnya?*" />
+      <Kinetic mode="wave" t0={33.95} t1={99} top={900} size={92} weight={600} lineHeight={1.12} text="Satu terbuka, *37* lagi. Daerahmu *berikutnya?*" />
+      {/* tempat cek peta yang sudah terbuka */}
+      <Kinetic mode="blur" t0={36.3} t1={99} top={1270} size={46} weight={500} lineHeight={1.3} text="Cek peta yang sudah terbuka di *atlasnusia.com*" />
     </AbsoluteFill>
   );
 };
@@ -299,7 +302,7 @@ const Cover: React.FC = () => (
     <AbsoluteFill style={{ background: C.onyx, overflow: "hidden" }}>
       <TimeProvider toDesign={STORY_DESIGN.toDesign}>
         <Story />
-        <Watermark until={37} />
+        <Watermark until={38.8} />
       </TimeProvider>
     </AbsoluteFill>
   </FontGate>

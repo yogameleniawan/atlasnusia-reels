@@ -92,6 +92,9 @@ function layout(text: string, size: number, weight: number, ls: number, maxW: nu
   return { toks, lines: lines.length, space };
 }
 
+/** Batas bawah teks di stage: subtitle mulai y 1440, sisakan jarak 30 px. */
+export const SAFE_BOTTOM = 1410;
+
 export const Kinetic: React.FC<{
   text: string;
   t0: number;
@@ -105,12 +108,24 @@ export const Kinetic: React.FC<{
   lineHeight?: number;
   align?: "left" | "center" | "right";
   step?: number;
-}> = ({ text, t0, t1, mode, left = 76, top, width = 928, size = 74, weight = 600, lineHeight = 1.18, align = "left", step }) => {
+  /** teks nggak boleh lewat garis ini (default SAFE_BOTTOM, di atas subtitle); kalau lewat, ukuran huruf dikecilkan otomatis */
+  maxBottom?: number;
+}> = ({ text, t0, t1, mode, left = 76, top, width = 928, size: size0 = 74, weight = 600, lineHeight = 1.18, align = "left", step, maxBottom = SAFE_BOTTOM }) => {
   const T = useT();
   if (T < t0 - 0.02 || T > t1 + 0.05) return null;
-  const ls = mode === "act" || size >= 70 ? -0.015 * size : -0.005 * size;
-  const lh = size * lineHeight;
-  const { toks } = layout(text, size, weight, ls, width, lh, align);
+  // kecilkan huruf sampai blok teks muat di atas maxBottom (biar nggak nabrak subtitle)
+  let size = size0,
+    ls = 0,
+    lh = 0,
+    toks: Tok[] = [];
+  for (;;) {
+    ls = mode === "act" || size >= 70 ? -0.015 * size : -0.005 * size;
+    lh = size * lineHeight;
+    const lay = layout(text, size, weight, ls, width, lh, align);
+    toks = lay.toks;
+    if (top + lay.lines * lh <= maxBottom || size <= size0 * 0.7) break;
+    size = Math.floor(size * 0.95);
+  }
   const charW = (ch: string) => measure(ch, size, weight, ls);
   const st = step ?? (mode === "drop" ? 0.075 : 0.085);
   let shake = 0;
