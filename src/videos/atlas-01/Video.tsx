@@ -9,6 +9,7 @@ import { CompassHud, GlowBorder, MapLettering, Measure, PlaceLabels, Pulses, Scr
 import { Card3D, headOf, Pin, ShapeIll } from "../../atlas/pins";
 import { Kinetic } from "../../atlas/kinetic";
 import { HookStack } from "../../atlas/hook";
+import { ProgressMap } from "../../atlas/progress";
 import { buildSubs, SubPhrase, Subtitles } from "../../atlas/subtitle";
 import { Bumper, BUMPER_SECONDS, PhotoCard, Watermark } from "../../atlas/brand";
 import { SfxCue, SfxHit } from "../../atlas/sfx";
@@ -18,14 +19,24 @@ import { VOICE } from "./voice";
 
 /**
  * ATLAS-01 · Danau Toba
- * Hook (teka-teki) → Sumatera Utara terangkat + pin & kartu → turun ke 2D, Danau Toba ditulis di peta
- * → 4 fakta teks kinetik → 4 foto (budaya, tempat, kerajinan, makanan) → ajakan → bumper.
+ * Hook (teka-teki) → AJAK: peta 38 provinsi, Sumatera Utara terbuka (0 → 1/38), minta penonton bantu buka sisanya
+ * → Sumatera Utara terangkat + pin & kartu → turun ke 2D, Danau Toba ditulis di peta
+ * → 4 fakta teks kinetik → 4 foto (budaya, tempat, kerajinan, makanan) → ajakan penutup → bumper.
+ *
+ * Animasi cerita (Story) ditulis di waktu "cerita" yang belum ada scene Ajak-nya. Scene Ajak disisipkan
+ * di AJAK_AT selama AJAK_LEN detik: selama itu cerita berhenti di bawah layar ajakan, sesudahnya geser AJAK_LEN.
  */
 const MAP = MAP_JSON as unknown as MapData;
 const PH = Object.fromEntries((PHOTOS_JSON as { key: string; src: string; credit: string }[]).map((p) => [p.key, p]));
 
 /** Scene desain (detik). name = judul bagian di naskah-dubbing.md, urutannya sama. */
-export const SCENES: DesignScene[] = [
+const AJAK_AT = 3.3,
+  AJAK_LEN = 5.5;
+/** waktu desain video → waktu cerita */
+const story = (t: number) => (t < AJAK_AT ? t : t < AJAK_AT + AJAK_LEN ? AJAK_AT : t - AJAK_LEN);
+/** waktu cerita → waktu desain video */
+const S = (t: number) => (t < AJAK_AT ? t : t + AJAK_LEN);
+const STORY_SCENES: DesignScene[] = [
   { name: "Hook", from: 0, to: 3.3 },
   { name: "Provinsi", from: 3.3, to: 6.6 },
   { name: "Masuk Toba", from: 6.6, to: 8.4 },
@@ -39,7 +50,12 @@ export const SCENES: DesignScene[] = [
   { name: "Arsik", from: 30.2, to: 33.6 },
   { name: "Ajakan", from: 33.6, to: 37.0 },
 ];
-const END = 37.0; // bumper mulai
+export const SCENES: DesignScene[] = [
+  STORY_SCENES[0],
+  { name: "Ajak", from: AJAK_AT, to: AJAK_AT + AJAK_LEN },
+  ...STORY_SCENES.slice(1).map((s) => ({ ...s, from: S(s.from), to: S(s.to) })),
+];
+const END = S(37.0); // bumper mulai
 
 const LOOK: MapLook = {
   camera: [
@@ -83,7 +99,7 @@ const widthEnds = (() => {
 })();
 
 /** SFX di waktu desain (detik) saat sesuatu "kena". */
-const CUES: SfxCue[] = [
+const STORY_CUES: SfxCue[] = [
   { t: 0.2, s: "swoosh" },
   { t: 1.95, s: "magic", vol: 0.7 },
   { t: 4.06, s: "key-lock" },
@@ -104,6 +120,15 @@ const CUES: SfxCue[] = [
   { t: 30.4, s: "pickup", vol: 0.8 },
   { t: 33.8, s: "join" },
   { t: 38.81, s: "achievement" },
+];
+const AJAK_UNLOCK = AJAK_AT + 1.4; // Sumatera Utara terbuka di peta progres
+const CUES: SfxCue[] = [
+  ...STORY_CUES.map((c) => ({ ...c, t: S(c.t) })),
+  { t: AJAK_AT + 0.05, s: "swoosh", vol: 0.8 },
+  { t: AJAK_UNLOCK + 0.3, s: "key-lock" },
+  { t: AJAK_UNLOCK + 0.4, s: "magic", vol: 0.75 },
+  { t: AJAK_UNLOCK + 0.55, s: "ding", vol: 0.8 },
+  { t: AJAK_AT + 2.35, s: "pickup", vol: 0.7 },
 ];
 
 /* ---------- ilustrasi kartu ---------- */
@@ -189,7 +214,7 @@ const MapOverlays: React.FC = () => {
   );
 };
 
-const Stage: React.FC<{ subs: SubPhrase[] }> = ({ subs }) => {
+const Story: React.FC = () => {
   const t = useT();
   const photoOn = win(t, 20.4, 33.6, 0.45);
   return (
@@ -201,7 +226,6 @@ const Stage: React.FC<{ subs: SubPhrase[] }> = ({ subs }) => {
         <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 1250, opacity: 1 - ramp(t, 2.9, 3.6), background: "linear-gradient(180deg, rgba(12,11,10,.95) 0%, rgba(12,11,10,.9) 52%, rgba(12,11,10,0) 100%)" }} />
         <CompassHud />
       </MapWorld>
-      <Watermark until={END} />
       {/* hook gaya "stack": baris meluncur bergantian kiri-kanan, kata kunci berongga lalu terisi emas */}
       <HookStack
         out={2.9}
@@ -227,36 +251,66 @@ const Stage: React.FC<{ subs: SubPhrase[] }> = ({ subs }) => {
       <Kinetic mode="wipe" t0={27.45} t1={30.2} top={1215} size={52} weight={500} lineHeight={1.32} text="*Ulos* ditenun dengan tangan, lalu diberikan sebagai tanda kasih sayang dan hormat." />
       <PhotoCard src={PH.arsik.src} credit={PH.arsik.credit} shape="round" t0={30.2} t1={33.4} drift={-1} focus="50% 45%" />
       <Kinetic mode="pop" t0={30.65} t1={33.4} top={1215} size={52} weight={500} lineHeight={1.32} text="*Arsik,* ikan mas berbumbu andaliman, disajikan utuh dari kepala sampai ekor saat acara adat." />
-      {/* ajakan: teks saja, huruf bergelombang */}
-      <Kinetic mode="wave" t0={33.95} t1={99} top={1000} size={96} weight={600} lineHeight={1.12} text="Daerahmu mau dibahas? *Tulis* *di* *komentar.*" />
-      <Subtitles subs={subs} />
-      <Bumper t0={END} />
+      {/* ajakan penutup: teks saja, huruf bergelombang */}
+      <Kinetic mode="wave" t0={33.95} t1={99} top={960} size={92} weight={600} lineHeight={1.12} text="Satu terbuka, *37* lagi. Daerahmu *berikutnya?*" />
     </AbsoluteFill>
   );
 };
 
+/** Scene Ajak: peta progres + ajakan buka bareng. Waktu desain video. */
+const Ajak: React.FC = () => (
+  <>
+    <ProgressMap t0={AJAK_AT} t1={AJAK_AT + AJAK_LEN} before={[]} unlock="Sumatera Utara" at={AJAK_UNLOCK} />
+    <Kinetic mode="drop" t0={AJAK_AT + 0.2} t1={AJAK_AT + 2.2} top={250} size={84} text="Peta Indonesia ini masih *gelap.*" />
+    <Kinetic mode="pop" t0={AJAK_AT + 2.35} t1={AJAK_AT + AJAK_LEN - 0.1} top={230} size={70} lineHeight={1.16} text="Sisanya kita buka *bareng.* Tulis daerahmu di *komentar!*" />
+  </>
+);
+
+const Stage: React.FC<{ subs: SubPhrase[]; toDesign: (f: number) => number }> = ({ subs, toDesign }) => (
+  <AbsoluteFill style={{ background: C.onyx, overflow: "hidden" }}>
+    <TimeProvider toDesign={(f) => story(toDesign(f))}>
+      <Story />
+    </TimeProvider>
+    <TimeProvider toDesign={toDesign}>
+      <Ajak />
+      <Watermark until={END} />
+      <Subtitles subs={subs} />
+      <Bumper t0={END} />
+    </TimeProvider>
+  </AbsoluteFill>
+);
+
 /* ---------- registrasi ---------- */
 const TL = timeline(SCENES, VOICE, BUMPER_SECONDS);
-const DESIGN = timeline(SCENES, { chunks: [], sync: null }, BUMPER_SECONDS);
 
 const SUBS = buildSubs(SCENES, VOICE, TL);
 const withTime = (toDesign: (f: number) => number, subs: SubPhrase[]): React.FC => {
   const C1: React.FC = () => (
     <FontGate>
-      <TimeProvider toDesign={toDesign}>
-        <Stage subs={subs} />
-      </TimeProvider>
+      <Stage subs={subs} toDesign={toDesign} />
     </FontGate>
   );
   return C1;
 };
+/** Cover: cerita tanpa scene Ajak, jadi frame cover (default 165 = pin + kartu provinsi) nggak geser. */
+const STORY_DESIGN = timeline(STORY_SCENES, { chunks: [], sync: null }, BUMPER_SECONDS);
+const Cover: React.FC = () => (
+  <FontGate>
+    <AbsoluteFill style={{ background: C.onyx, overflow: "hidden" }}>
+      <TimeProvider toDesign={STORY_DESIGN.toDesign}>
+        <Story />
+        <Watermark until={37} />
+      </TimeProvider>
+    </AbsoluteFill>
+  </FontGate>
+);
 
 export const ATLAS01 = {
   id: "ATLAS-01",
   title: "Danau Toba",
   component: withTime(TL.toDesign, SUBS),
-  cover: withTime(DESIGN.toDesign, []),
-  coverFrames: DESIGN.totalFrames,
+  cover: Cover,
+  coverFrames: STORY_DESIGN.totalFrames,
   totalFrames: TL.totalFrames,
   voice: TL.track,
   sfx: CUES.map((c) => ({ at: TL.toFrame(c.t), s: c.s, vol: c.vol ?? 1 })) as SfxHit[],

@@ -13,111 +13,131 @@ export const VOICE: VoiceData = {
     },
     {
       "scene": 1,
-      "text": "Kita ke Sumatera Utara,"
+      "text": "Sebelum dijawab, lihat peta ini."
     },
     {
       "scene": 1,
-      "text": "provinsi dengan tiga puluh tiga kabupaten dan kota."
+      "text": "Dari tiga puluh delapan provinsi, belum satu pun terbuka."
+    },
+    {
+      "scene": 1,
+      "text": "Episode ini membuka yang pertama."
+    },
+    {
+      "scene": 1,
+      "text": "Sisanya kita buka bareng, tulis daerahmu di kolom komentar!"
     },
     {
       "scene": 2,
+      "text": "Kita ke Sumatera Utara,"
+    },
+    {
+      "scene": 2,
+      "text": "provinsi dengan tiga puluh tiga kabupaten dan kota."
+    },
+    {
+      "scene": 3,
       "text": "Ini dia, Danau Toba."
     },
     {
-      "scene": 3,
+      "scene": 4,
       "text": "Sekitar tujuh puluh empat ribu tahun lalu,"
     },
     {
-      "scene": 3,
+      "scene": 4,
       "text": "Gunung Toba meletus dahsyat."
     },
     {
-      "scene": 3,
+      "scene": 4,
       "text": "Kawahnya runtuh, lalu terisi air."
     },
     {
-      "scene": 4,
+      "scene": 5,
       "text": "Panjangnya sekitar seratus kilometer,"
     },
     {
-      "scene": 4,
+      "scene": 5,
       "text": "lebarnya tiga puluh kilometer,"
     },
     {
-      "scene": 4,
+      "scene": 5,
       "text": "dan dalamnya lebih dari lima ratus meter."
     },
     {
-      "scene": 5,
+      "scene": 6,
       "text": "Di tengahnya ada Pulau Samosir."
     },
     {
-      "scene": 5,
+      "scene": 6,
       "text": "Luasnya sekitar enam ratus tiga puluh kilometer persegi,"
     },
     {
-      "scene": 5,
+      "scene": 6,
       "text": "hampir seluas Singapura."
     },
     {
-      "scene": 6,
+      "scene": 7,
       "text": "Dan di puncak Samosir ada Danau Sidihoni."
     },
     {
-      "scene": 6,
+      "scene": 7,
       "text": "Jadi ada danau di atas pulau, di tengah danau."
     },
     {
-      "scene": 7,
+      "scene": 8,
       "text": "Di Samosir ada Sigale-gale,"
     },
     {
-      "scene": 7,
+      "scene": 8,
       "text": "boneka kayu seukuran manusia yang"
     },
     {
-      "scene": 7,
+      "scene": 8,
       "text": "dulu ditarikan saat upacara kematian."
     },
     {
-      "scene": 8,
+      "scene": 9,
       "text": "Ini gerbang Huta Siallagan, kampung Batak berpagar batu."
     },
     {
-      "scene": 8,
+      "scene": 9,
       "text": "Di dalamnya ada kursi batu raja yang"
     },
     {
-      "scene": 8,
+      "scene": 9,
       "text": "umurnya lebih dari dua ratus tahun."
     },
     {
-      "scene": 9,
+      "scene": 10,
       "text": "Ulos ditenun dengan tangan,"
     },
     {
-      "scene": 9,
+      "scene": 10,
       "text": "lalu diberikan sebagai tanda kasih sayang dan hormat."
     },
     {
-      "scene": 10,
+      "scene": 11,
       "text": "Kalau lapar, coba arsik."
     },
     {
-      "scene": 10,
+      "scene": 11,
       "text": "Ikan mas berbumbu andaliman,"
     },
     {
-      "scene": 10,
+      "scene": 11,
       "text": "disajikan utuh dari kepala sampai ekor saat acara adat."
     },
     {
-      "scene": 11,
-      "text": "Daerahmu mau dibahas berikutnya?"
+      "scene": 12,
+      "text": "Sumatera Utara sudah terbuka, tinggal tiga puluh tujuh lagi."
     },
     {
-      "scene": 11,
-      "text": "Tulis di kolom komentar."
+      "scene": 12,
+      "text": "Daerahmu mau dibuka berikutnya?"
+    },
+    {
+      "scene": 12,
+      "text": "Tulis di kolom komentar, kita buka bareng."
     }
   ],
   "sync": null

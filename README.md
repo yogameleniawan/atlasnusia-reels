@@ -48,6 +48,18 @@ Koleksi yang sama dengan algonoma-reels di `public/sfx/`. Daftar & arti tiap sua
 Cue ditulis di `Video.tsx` dalam waktu desain: `{ t: 9.38, s: "drum" }`, ikut geser otomatis kalau durasi ngikut voice.
 Matikan: `--props='{"noSfx":true}'` · volume: `--props='{"sfxVolume":0.6}'`.
 
+## Alur video
+
+Hook → **Ajak** → isi (peta, fakta, foto) → ajakan penutup → bumper.
+
+- **Ajak** (±5,5 dtk, tepat setelah hook): peta 38 provinsi seperti di aplikasi peta Atlasnusia. Provinsi episode ini
+  terbuka di depan penonton, angka berganti (mis. 0 → 1 / 38, sisa 37), lalu minta penonton bantu buka sisanya
+  lewat komentar. Komponen `ProgressMap` (`src/atlas/progress.tsx`): isi `before` (provinsi yang sudah terbuka
+  sebelum episode ini), `unlock` (provinsi episode ini), `prod` (yang sedang diproduksi).
+- Animasi cerita ditulis di "waktu cerita" tanpa scene Ajak; `Video.tsx` menyisipkan Ajak di `AJAK_AT` selama
+  `AJAK_LEN` dan menggeser sisanya (`story()` / `S()`). Cover diambil dari waktu cerita, jadi frame 165 tetap pin + kartu.
+- Ajakan penutup sebut progresnya juga ("Satu terbuka, 37 lagi").
+
 ## Episode baru (ATLAS-XX)
 
 1. **Peta**: `npm run map -- --out src/videos/atlas-XX/map.json --bbox ... --cen ... --province "..."`
@@ -55,8 +67,9 @@ Matikan: `--props='{"noSfx":true}'` · volume: `--props='{"sfxVolume":0.6}'`.
 2. **Foto**: isi `src/videos/atlas-XX/photos.json` dengan judul file Wikimedia Commons, lalu
    `npm run photos -- ATLAS-XX` → foto masuk `public/photos/atlas-XX/`, kredit & lisensi terisi otomatis.
    Cuma lisensi bebas (CC0, public domain, CC BY, CC BY-SA) yang diterima.
-3. **Naskah**: `naskah-dubbing.md` per scene.
-4. **Video.tsx**: salin dari `atlas-01`, ganti scene, kamera, pin, kartu, teks kinetik, foto, cue SFX.
+3. **Naskah**: `naskah-dubbing.md` per scene (termasuk bagian **Ajak** setelah Hook).
+4. **Video.tsx**: salin dari `atlas-01`, ganti scene, kamera, pin, kartu, teks kinetik, foto, cue SFX,
+   dan `ProgressMap` (before/unlock/prod sesuai peta terkini).
    Daftarkan di `src/videos/index.ts`.
 5. `npm run sync -- ATLAS-XX` (bikin `voice.ts` + `naskah-voice.txt`), cek di Studio, render.
 
@@ -66,13 +79,14 @@ Matikan: `--props='{"noSfx":true}'` · volume: `--props='{"sfxVolume":0.6}'`.
 public/fonts            Poppins 300–700 (+ 300 italic)
 public/sfx              sound effect
 public/photos/atlas-XX  foto episode (Wikimedia Commons, kredit di photos.json)
-scripts/                render, make, sync (Whisper), cover, commons (foto), prep_map.py (peta)
+scripts/                render, make, sync (Whisper), cover, commons (foto), prep_map.py (peta), prep_provinces.py (38 provinsi)
 src/atlas/              mesin Atlasnusia
   tokens.ts             warna, font, easing, bounce
   map.ts, MapStage.tsx  data peta, kamera, lempeng 3D (three.js)
   overlay.tsx           label kota/kabupaten, border menyala, garis ukur, tulisan di peta, kompas, scrim
   pins.tsx              pin emas memantul + kartu 3D + ilustrasi siluet wilayah
   kinetic.tsx           teks kinetik (mode act/pop/drop/wipe/blur/type/wave + efek per kata) + HookLines
+  progress.tsx          ProgressMap: peta 38 provinsi + angka terbuka/sisa (scene Ajak); data indonesia.json
   hook.tsx              HookStack (gaya hook ATLAS-01); gaya hook diganti tiap episode
   subtitle.tsx          subtitle berjalan per frasa (buildSubs + Subtitles)
   brand.tsx             simbol, watermark, bumper, bingkai foto (arch/polaroid/woven/round)
@@ -84,7 +98,7 @@ src/videos/atlas-XX/    satu episode: Video.tsx, map.json, photos.json, naskah-d
 
 | ID | Judul | Durasi |
 |---|---|---|
-| ATLAS-01 | Danau Toba: danau di atas pulau di tengah danau | ±41 dtk (tanpa voice) |
+| ATLAS-01 | Danau Toba: danau di atas pulau di tengah danau | ±46,5 dtk (tanpa voice) |
 
 ## Sumber data & lisensi
 
