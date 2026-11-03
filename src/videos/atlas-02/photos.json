@@ -1,0 +1,29 @@
+[
+  {
+    "key": "ampera",
+    "title": "File:Ampera Bridge, Palembang.jpg",
+    "src": "photos/atlas-02/ampera.jpg",
+    "credit": "Foto: Achmad Rabin Taim · Wikimedia Commons · CC BY 2.0",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Ampera_Bridge,_Palembang.jpg"
+  },
+  {
+    "key": "songket",
+    "title": "File:Melestarikan Songket Palembang.jpg",
+    "src": "photos/atlas-02/songket.jpg",
+    "credit": "Foto: Afrinaldi Zulhen · Wikimedia Commons · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Melestarikan_Songket_Palembang.jpg"
+  },
+  {
+    "key": "pempek",
+    "title": "File:Pempek campur.JPG",
+    "src": "photos/atlas-02/pempek.jpg",
+    "credit": "Foto: Midori · Wikimedia Commons · CC BY-SA 3.0",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pempek_campur.JPG"
+  }
+]

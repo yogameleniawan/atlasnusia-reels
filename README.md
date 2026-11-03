@@ -88,7 +88,8 @@ src/atlas/              mesin Atlasnusia
   pins.tsx              pin emas memantul + kartu 3D + ilustrasi siluet wilayah
   kinetic.tsx           teks kinetik (mode act/pop/drop/wipe/blur/type/wave + efek per kata) + HookLines
   progress.tsx          ProgressMap: peta 38 provinsi + angka terbuka/sisa (scene Ajak); data indonesia.json
-  hook.tsx              HookStack (gaya hook ATLAS-01); gaya hook diganti tiap episode
+  hook.tsx              HookStack (gaya hook ATLAS-01); ATLAS-02 pakai HookLines (kinetic.tsx); gaya hook diganti tiap episode
+  initiator.tsx         InitiatorSpotlight: apresiasi Inisiator (foto profil hanya dengan izin, komentar asli)
   subtitle.tsx          subtitle berjalan per frasa (buildSubs + Subtitles)
   brand.tsx             simbol, watermark, bumper, bingkai foto (arch/polaroid/woven/round)
   voice.tsx, sfx.tsx    timeline voice, backsound, SFX
@@ -100,6 +101,7 @@ src/videos/atlas-XX/    satu episode: Video.tsx, map.json, photos.json, naskah-d
 | ID | Judul | Durasi |
 |---|---|---|
 | ATLAS-01 | Perkenalan Atlasnusia + Aceh: titik nol Indonesia (Kilometer Nol, Pulau Weh) | ±57 dtk (tanpa voice) |
+| ATLAS-02 | Sumatera Selatan: jembatan yang tengahnya bisa naik (Ampera), Inisiator @tamaaa066 | ±48 dtk (tanpa voice) |
 
 ## Sumber data & lisensi
 
