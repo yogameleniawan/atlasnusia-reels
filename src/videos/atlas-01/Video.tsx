@@ -10,6 +10,7 @@ import { Card3D, headOf, Pin, ShapeIll } from "../../atlas/pins";
 import { Kinetic } from "../../atlas/kinetic";
 import { HookStack } from "../../atlas/hook";
 import { ProgressMap } from "../../atlas/progress";
+import { SiteFinale } from "../../atlas/finale";
 import { buildSubs, SubPhrase, Subtitles } from "../../atlas/subtitle";
 import { Bumper, BUMPER_SECONDS, PhotoCard, Watermark } from "../../atlas/brand";
 import { SfxCue, SfxHit } from "../../atlas/sfx";
@@ -205,8 +206,10 @@ const Story: React.FC = () => {
       <PhotoCard src={PH.mie.src} credit={PH.mie.credit} shape="round" t0={28.2} t1={31.2} drift={-1} />
       <Kinetic mode="pop" t0={28.65} t1={31.2} top={1200} size={48} weight={500} lineHeight={1.32} text="*Mie* *Aceh,* mi tebal berbumbu rempah, digoreng atau berkuah." />
       {/* ajakan penutup: teks saja, huruf bergelombang */}
-      <Kinetic mode="wave" t0={31.75} t1={99} top={900} size={92} weight={600} lineHeight={1.12} text="Aceh terbuka, *37* lagi. Daerahmu *berikutnya?*" />
-      <Kinetic mode="blur" t0={34.1} t1={99} top={1270} size={46} weight={500} lineHeight={1.3} text="Cek peta yang sudah terbuka di *atlasnusia.com*" />
+      {/* penutup: sorot situs atlasnusia.com */}
+      <SiteFinale t0={31.5} open={["Aceh"]} />
+      <Kinetic mode="wave" t0={31.75} t1={99} top={250} size={84} weight={600} lineHeight={1.12} align="center" text="Aceh terbuka, *37* lagi. Daerahmu *berikutnya?*" />
+      <Kinetic mode="blur" t0={33.2} t1={99} top={1140} size={44} weight={500} lineHeight={1.3} align="center" text="Cek peta yang sudah terbuka di" />
     </AbsoluteFill>
   );
 };

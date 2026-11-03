@@ -15,6 +15,8 @@ import INDO from "./indonesia.json";
  */
 type Prov = { d: string; c: [number, number]; b: [number, number, number, number] };
 const P = (INDO as unknown as { p: Record<string, Prov> }).p;
+/** bentuk 38 provinsi (proyeksi 1000 × 375,5), dipakai juga oleh SiteFinale */
+export const PROV_SHAPES = P;
 export const PROVINCES = Object.keys(P);
 
 export const ProgressMap: React.FC<{
@@ -189,13 +191,30 @@ export const ProgressMap: React.FC<{
   );
 };
 
-/** Angka berganti dengan gerak gulung ke atas. */
+/** Angka berganti dengan gerak gulung ke atas. Lebar wadah = angka terpanjang (lama/baru), jadi nggak terpotong. */
 const Flip: React.FC<{ value: number; prev: number; u: number; size: number; color: string }> = ({ value, prev, u, size, color }) => {
   const show = value === prev ? 1 : u;
+  const wide = String(value).length >= String(prev).length ? value : prev;
+  const lay: React.CSSProperties = { position: "absolute", left: 0, right: 0, top: 0, textAlign: "right" };
   return (
-    <span style={{ position: "relative", display: "inline-block", height: size * 1.05, overflow: "hidden", fontSize: size, fontWeight: 600, lineHeight: 1.05, color, letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums" }}>
-      <span style={{ display: "block", transform: `translateY(${(-show * 100).toFixed(1)}%)`, opacity: value === prev ? 0 : 1 - show }}>{prev}</span>
-      <span style={{ display: "block", position: "absolute", left: 0, top: 0, transform: `translateY(${((1 - show) * 100).toFixed(1)}%)`, opacity: value === prev ? 1 : show }}>{value}</span>
+    <span
+      style={{
+        position: "relative",
+        display: "inline-block",
+        height: size * 1.05,
+        padding: "0 0.06em",
+        fontSize: size,
+        fontWeight: 600,
+        lineHeight: 1.05,
+        color,
+        letterSpacing: "-0.02em",
+        fontVariantNumeric: "tabular-nums",
+        clipPath: "inset(0 -20% 0 -20%)",
+      }}
+    >
+      <span style={{ visibility: "hidden" }}>{wide}</span>
+      <span style={{ ...lay, transform: `translateY(${(-show * 100).toFixed(1)}%)`, opacity: value === prev ? 0 : 1 - show }}>{prev}</span>
+      <span style={{ ...lay, transform: `translateY(${((1 - show) * 100).toFixed(1)}%)`, opacity: value === prev ? 1 : show }}>{value}</span>
     </span>
   );
 };

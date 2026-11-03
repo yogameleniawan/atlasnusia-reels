@@ -10,6 +10,7 @@ import { Card3D, headOf, Pin, ShapeIll } from "../../atlas/pins";
 import { HookLines, Kinetic } from "../../atlas/kinetic";
 import { ProgressMap } from "../../atlas/progress";
 import { InitiatorSpotlight } from "../../atlas/initiator";
+import { SiteFinale } from "../../atlas/finale";
 import { buildSubs, SubPhrase, Subtitles } from "../../atlas/subtitle";
 import { Bumper, BUMPER_SECONDS, PhotoCard, Watermark } from "../../atlas/brand";
 import { SfxCue, SfxHit } from "../../atlas/sfx";
@@ -230,8 +231,10 @@ const Story: React.FC = () => {
       <Kinetic mode="wipe" t0={21.85} t1={24.8} top={1200} size={48} weight={500} lineHeight={1.32} text="*Songket* *Palembang* ditenun dengan benang emas, dipakai saat upacara adat dan pernikahan." />
       <PhotoCard src={PH.pempek.src} credit={PH.pempek.credit} shape="round" t0={24.8} t1={28.0} drift={-1} />
       <Kinetic mode="pop" t0={25.25} t1={28.0} top={1200} size={48} weight={500} lineHeight={1.32} text="*Pempek,* olahan ikan dan sagu, disantap dengan kuah cuko asam, manis, pedas." />
-      <Kinetic mode="wave" t0={28.55} t1={99} top={900} size={92} weight={600} lineHeight={1.12} text="Dua terbuka, *36* lagi. Daerahmu *berikutnya?*" />
-      <Kinetic mode="blur" t0={30.9} t1={99} top={1270} size={46} weight={500} lineHeight={1.3} text="Cek peta yang sudah terbuka di *atlasnusia.com*" />
+      {/* penutup: sorot situs atlasnusia.com */}
+      <SiteFinale t0={28.3} open={["Aceh", "Sumatera Selatan"]} />
+      <Kinetic mode="wave" t0={28.55} t1={99} top={250} size={84} weight={600} lineHeight={1.12} align="center" text="Dua terbuka, *36* lagi. Daerahmu *berikutnya?*" />
+      <Kinetic mode="blur" t0={30.0} t1={99} top={1140} size={44} weight={500} lineHeight={1.3} align="center" text="Cek peta yang sudah terbuka di" />
     </AbsoluteFill>
   );
 };
