@@ -4,6 +4,7 @@
 // Opsi render/cover tetap jalan: --30, --no-cover, --frame=120. Opsi sync: --model=medium.
 import { spawnSync } from "node:child_process";
 import { sync } from "./sync.mjs";
+import { ensurePhotos } from "./photos-check.mjs";
 
 const args = process.argv.slice(2);
 const ids = args.filter((a) => !a.startsWith("--"));
@@ -17,6 +18,10 @@ const renderFlags = flags.filter((a) => !a.startsWith("--model="));
 
 const failed = [];
 for (const id of ids) {
+  if (!ensurePhotos(id)) {
+    failed.push(id);
+    continue;
+  }
   console.log(`\n=== ${id} · 1/2 sync voice ===`);
   try {
     await sync(id, { model });

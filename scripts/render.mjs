@@ -9,6 +9,7 @@ import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { makeCover, parseFrame } from "./cover.mjs";
 import { hashFiles, sync, voiceFilesFor } from "./sync.mjs";
+import { ensurePhotos } from "./photos-check.mjs";
 
 const args = process.argv.slice(2);
 const id = args.find((a) => !a.startsWith("--"));
@@ -16,6 +17,8 @@ if (!id) {
   console.error("Kasih ID videonya, contoh: npm run render -- ATLAS-01");
   process.exit(1);
 }
+// Foto Commons nggak ikut di-commit: unduh dulu kalau belum ada.
+if (!ensurePhotos(id)) process.exit(1);
 // Voice: sync dulu kalau file voice baru/berubah.
 const n = id.replace(/^ATLAS-/i, "");
 const voiceTs = `src/videos/atlas-${n}/voice.ts`;
