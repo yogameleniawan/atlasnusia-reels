@@ -1,0 +1,29 @@
+[
+  {
+    "key": "karang",
+    "title": "File:Wakatobi-129.jpg",
+    "src": "photos/atlas-04/karang.jpg",
+    "credit": "Foto: Craig D · Wikimedia Commons · CC BY-SA 2.0",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Wakatobi-129.jpg"
+  },
+  {
+    "key": "benteng",
+    "title": "File:Lawana Wandailolo.jpg",
+    "src": "photos/atlas-04/benteng.jpg",
+    "credit": "Foto: Marwan Mohamad · Wikimedia Commons · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lawana_Wandailolo.jpg"
+  },
+  {
+    "key": "sinonggi",
+    "title": "File:Sinonggi.jpg",
+    "src": "photos/atlas-04/sinonggi.jpg",
+    "credit": "Foto: Akhsan05 · Wikimedia Commons · CC0",
+    "license": "CC0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "page": "https://commons.wikimedia.org/wiki/File:Sinonggi.jpg"
+  }
+]

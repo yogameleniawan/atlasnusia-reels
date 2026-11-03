@@ -1,9 +1,10 @@
 import { ATLAS01 } from "./atlas-01/Video";
 import { ATLAS02 } from "./atlas-02/Video";
 import { ATLAS03 } from "./atlas-03/Video";
+import { ATLAS04 } from "./atlas-04/Video";
 
 /**
  * Daftar semua episode. Episode baru: bikin folder src/videos/atlas-XX/
  * (Video.tsx + map.json + photos.json + naskah-dubbing.md), jalankan `npm run sync -- ATLAS-XX`, lalu tambahkan ke array ini.
  */
-export const VIDEOS = [ATLAS01, ATLAS02, ATLAS03];
+export const VIDEOS = [ATLAS01, ATLAS02, ATLAS03, ATLAS04];
