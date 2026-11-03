@@ -1,7 +1,7 @@
 // Ambil foto dari Wikimedia Commons + kredit & lisensinya.
 // Pakai: npm run photos -- ATLAS-01
 //   Baca src/videos/atlas-01/photos.json → [{ "key": "sigale", "title": "File:Patung Sigale-gale pulau Samosir.jpg" }, …]
-//   Download lebar 1400 px → public/photos/atlas-01/<key>.jpg
+//   Download lebar 1280 px (ukuran thumbnail standar Wikimedia) → public/photos/atlas-01/<key>.jpg
 //   Isi "credit", "license", "licenseUrl", "page" di photos.json (dipakai Video.tsx, kredit tampil di bawah foto).
 // Hanya lisensi bebas yang diterima (CC0, Public domain, CC BY, CC BY-SA). Selain itu ditolak.
 // Wikimedia membatasi kecepatan: kalau kena 429, script nunggu lalu coba lagi.
@@ -38,7 +38,7 @@ if (!existsSync(file)) {
   process.exit(1);
 }
 const list = JSON.parse(readFileSync(file, "utf8"));
-const params = new URLSearchParams({ action: "query", format: "json", prop: "imageinfo", iiprop: "url|extmetadata", iiurlwidth: "1400", titles: list.map((p) => p.title).join("|") });
+const params = new URLSearchParams({ action: "query", format: "json", prop: "imageinfo", iiprop: "url|extmetadata", iiurlwidth: "1280", titles: list.map((p) => p.title).join("|") });
 const info = await get(`https://commons.wikimedia.org/w/api.php?${params}`);
 const pages = Object.values(info.query?.pages ?? {});
 const norm = Object.fromEntries((info.query?.normalized ?? []).map((x) => [x.from, x.to]));

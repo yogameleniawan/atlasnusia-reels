@@ -5,142 +5,146 @@ export const VOICE: VoiceData = {
   "chunks": [
     {
       "scene": 0,
-      "text": "Ada danau di atas pulau, dan pulaunya ada di tengah danau."
-    },
-    {
-      "scene": 0,
-      "text": "Di mana itu?"
+      "text": "Indonesia punya titik nol. Di mana letaknya?"
     },
     {
       "scene": 1,
-      "text": "Sebelum dijawab, lihat peta ini."
+      "text": "Sebelum dijawab, kenalan dulu."
     },
     {
       "scene": 1,
-      "text": "Dari tiga puluh delapan provinsi, belum satu pun terbuka."
+      "text": "Ini Atlasnusia, tempat kita mengenal daerah-daerah Indonesia."
     },
     {
       "scene": 1,
-      "text": "Episode ini membuka yang pertama."
+      "text": "Lihat peta ini."
     },
     {
       "scene": 1,
-      "text": "Sisanya kita buka bareng, tulis daerahmu di kolom komentar!"
+      "text": "Tiga puluh delapan provinsi, semuanya masih gelap."
+    },
+    {
+      "scene": 1,
+      "text": "Tiap episode, kita buka satu."
+    },
+    {
+      "scene": 1,
+      "text": "Hari ini yang pertama, Aceh!"
+    },
+    {
+      "scene": 1,
+      "text": "Sisanya kita buka bareng, tulis daerahmu di kolom komentar."
     },
     {
       "scene": 2,
-      "text": "Kita ke Sumatera Utara,"
+      "text": "Selamat datang di Aceh,"
     },
     {
       "scene": 2,
-      "text": "provinsi dengan tiga puluh tiga kabupaten dan kota."
+      "text": "provinsi dengan dua puluh tiga kabupaten dan kota."
+    },
+    {
+      "scene": 2,
+      "text": "Ibu kotanya Banda Aceh."
     },
     {
       "scene": 3,
-      "text": "Ini dia, Danau Toba."
+      "text": "Aceh ada di ujung paling barat Indonesia,"
+    },
+    {
+      "scene": 3,
+      "text": "diapit Selat Malaka dan Samudra Hindia."
     },
     {
       "scene": 4,
-      "text": "Sekitar tujuh puluh empat ribu tahun lalu,"
-    },
-    {
-      "scene": 4,
-      "text": "Gunung Toba meletus dahsyat."
-    },
-    {
-      "scene": 4,
-      "text": "Kawahnya runtuh, lalu terisi air."
+      "text": "Di ujungnya ada pulau kecil, Pulau Weh."
     },
     {
       "scene": 5,
-      "text": "Panjangnya sekitar seratus kilometer,"
+      "text": "Di sini berdiri Tugu Kilometer Nol,"
     },
     {
       "scene": 5,
-      "text": "lebarnya tiga puluh kilometer,"
-    },
-    {
-      "scene": 5,
-      "text": "dan dalamnya lebih dari lima ratus meter."
+      "text": "penanda ujung barat Indonesia. Inilah titik nolnya."
     },
     {
       "scene": 6,
-      "text": "Di tengahnya ada Pulau Samosir."
+      "text": "Tugunya ada di Iboih, Sabang,"
     },
     {
       "scene": 6,
-      "text": "Luasnya sekitar enam ratus tiga puluh kilometer persegi,"
-    },
-    {
-      "scene": 6,
-      "text": "hampir seluas Singapura."
+      "text": "dan diresmikan tahun seribu sembilan ratus sembilan puluh tujuh."
     },
     {
       "scene": 7,
-      "text": "Dan di puncak Samosir ada Danau Sidihoni."
+      "text": "Aceh juga dijuluki Serambi Mekkah. Dulu,"
     },
     {
       "scene": 7,
-      "text": "Jadi ada danau di atas pulau, di tengah danau."
+      "text": "jamaah haji dari Nusantara singgah di"
+    },
+    {
+      "scene": 7,
+      "text": "sini sebelum berlayar ke Mekkah."
     },
     {
       "scene": 8,
-      "text": "Di Samosir ada Sigale-gale,"
+      "text": "Ini Masjid Raya Baiturrahman di Banda Aceh."
     },
     {
       "scene": 8,
-      "text": "boneka kayu seukuran manusia yang"
+      "text": "Bangunannya mulai dibangun tahun seribu"
     },
     {
       "scene": 8,
-      "text": "dulu ditarikan saat upacara kematian."
+      "text": "delapan ratus tujuh puluh sembilan."
+    },
+    {
+      "scene": 8,
+      "text": "Saat tsunami dua ribu empat,"
+    },
+    {
+      "scene": 8,
+      "text": "masjid ini tetap berdiri dan jadi tempat berlindung."
     },
     {
       "scene": 9,
-      "text": "Ini gerbang Huta Siallagan, kampung Batak berpagar batu."
+      "text": "Dari tanah Gayo ada Tari Saman."
     },
     {
       "scene": 9,
-      "text": "Di dalamnya ada kursi batu raja yang"
+      "text": "Penarinya duduk berbaris, tepukannya makin lama makin cepat."
     },
     {
       "scene": 9,
-      "text": "umurnya lebih dari dua ratus tahun."
+      "text": "Tahun dua ribu sebelas,"
+    },
+    {
+      "scene": 9,
+      "text": "UNESCO menetapkannya sebagai warisan budaya takbenda."
     },
     {
       "scene": 10,
-      "text": "Ulos ditenun dengan tangan,"
+      "text": "Kalau lapar, coba mie Aceh."
     },
     {
       "scene": 10,
-      "text": "lalu diberikan sebagai tanda kasih sayang dan hormat."
+      "text": "Mienya tebal, bumbunya kaya rempah, bisa digoreng atau berkuah."
     },
     {
       "scene": 11,
-      "text": "Kalau lapar, coba arsik."
+      "text": "Aceh sudah terbuka, tinggal tiga puluh tujuh lagi."
     },
     {
       "scene": 11,
-      "text": "Ikan mas berbumbu andaliman,"
-    },
-    {
-      "scene": 11,
-      "text": "disajikan utuh dari kepala sampai ekor saat acara adat."
-    },
-    {
-      "scene": 12,
-      "text": "Sumatera Utara sudah terbuka, tinggal tiga puluh tujuh lagi."
-    },
-    {
-      "scene": 12,
       "text": "Daerahmu mau dibuka berikutnya?"
     },
     {
-      "scene": 12,
+      "scene": 11,
       "text": "Tulis di kolom komentar, kita buka bareng."
     },
     {
-      "scene": 12,
+      "scene": 11,
       "text": "Peta yang sudah terbuka bisa kamu cek di atlasnusia dot com."
     }
   ],

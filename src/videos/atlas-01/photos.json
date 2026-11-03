@@ -1,38 +1,38 @@
 [
   {
-    "key": "sigale",
-    "title": "File:Patung Sigale-gale pulau Samosir.jpg",
-    "src": "photos/atlas-01/sigale.jpg",
-    "credit": "Foto: Marudut Parsaoran Anakampun · Wikimedia Commons · CC BY-SA 4.0",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Patung_Sigale-gale_pulau_Samosir.jpg"
+    "key": "km0",
+    "title": "File:Tugu KM 0 Sabang.png",
+    "src": "photos/atlas-01/km0.jpg",
+    "credit": "Foto: BPKS · Wikimedia Commons · Public domain",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "page": "https://commons.wikimedia.org/wiki/File:Tugu_KM_0_Sabang.png"
   },
   {
-    "key": "siallagan",
-    "title": "File:Huta Siallagan Batak Village.jpg",
-    "src": "photos/atlas-01/siallagan.jpg",
-    "credit": "Foto: Ahanpranata · Wikimedia Commons · CC BY-SA 3.0",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Huta_Siallagan_Batak_Village.jpg"
+    "key": "masjid",
+    "title": "File:Masjid raya baiturahman aceh.jpg",
+    "src": "photos/atlas-01/masjid.jpg",
+    "credit": "Foto: Dicky Herlambang · Wikimedia Commons · CC0",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Masjid_raya_baiturahman_aceh.jpg"
   },
   {
-    "key": "ulos",
-    "title": "File:Tenun Ulos Batak Pulau Samosir.jpg",
-    "src": "photos/atlas-01/ulos.jpg",
-    "credit": "Foto: Pratechno · Wikimedia Commons · CC BY-SA 4.0",
+    "key": "saman",
+    "title": "File:Tari Saman Aceh.jpg",
+    "src": "photos/atlas-01/saman.jpg",
+    "credit": "Foto: Adearmanda · Wikimedia Commons · CC BY-SA 4.0",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Tenun_Ulos_Batak_Pulau_Samosir.jpg"
+    "page": "https://commons.wikimedia.org/wiki/File:Tari_Saman_Aceh.jpg"
   },
   {
-    "key": "arsik",
-    "title": "File:Arsik Ikan Mas 2.jpg",
-    "src": "photos/atlas-01/arsik.jpg",
-    "credit": "Foto: Gunawan Kartapranata · Wikimedia Commons · CC BY-SA 4.0",
+    "key": "mie",
+    "title": "File:Mi aceh.jpg",
+    "src": "photos/atlas-01/mie.jpg",
+    "credit": "Foto: Harvmi · Wikimedia Commons · CC BY-SA 4.0",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Arsik_Ikan_Mas_2.jpg"
+    "page": "https://commons.wikimedia.org/wiki/File:Mi_aceh.jpg"
   }
 ]

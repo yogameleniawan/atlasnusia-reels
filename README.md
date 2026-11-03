@@ -99,7 +99,7 @@ src/videos/atlas-XX/    satu episode: Video.tsx, map.json, photos.json, naskah-d
 
 | ID | Judul | Durasi |
 |---|---|---|
-| ATLAS-01 | Danau Toba: danau di atas pulau di tengah danau | ±48 dtk (tanpa voice) |
+| ATLAS-01 | Perkenalan Atlasnusia + Aceh: titik nol Indonesia (Kilometer Nol, Pulau Weh) | ±57 dtk (tanpa voice) |
 
 ## Sumber data & lisensi
 
