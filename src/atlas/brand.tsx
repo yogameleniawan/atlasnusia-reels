@@ -30,7 +30,7 @@ export const Watermark: React.FC<{ until: number }> = ({ until }) => {
 };
 
 /** Bumper penutup 4 dtk: lingkaran → bujur → lintang → "A" → berlian jatuh memantul → wordmark → @handle. */
-export const Bumper: React.FC<{ t0: number; handle?: string }> = ({ t0, handle = "@atlasnusia" }) => {
+export const Bumper: React.FC<{ t0: number; handle?: string; site?: string }> = ({ t0, handle = "@atlasnusia", site = "atlasnusia.com" }) => {
   const t = useT();
   const u = t - t0;
   if (u < 0) return null;
@@ -68,6 +68,7 @@ export const Bumper: React.FC<{ t0: number; handle?: string }> = ({ t0, handle =
       <div style={{ marginTop: 26, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: sb, transform: `translateY(${((1 - sb) * 16).toFixed(1)}px)` }}>
         <div style={{ fontSize: 44, color: C.goldLight, letterSpacing: "0.04em" }}>{handle}</div>
         <div style={{ fontSize: 26, fontWeight: 300, letterSpacing: "0.22em", color: C.muted, textTransform: "uppercase" }}>Instagram · YouTube · TikTok · Facebook</div>
+        <div style={{ marginTop: 18, fontSize: 36, fontWeight: 500, color: C.ivory, letterSpacing: "0.04em", opacity: ramp(u, 2.9, 3.3) }}>{site}</div>
       </div>
     </div>
   );

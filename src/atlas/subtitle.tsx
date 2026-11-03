@@ -14,9 +14,12 @@ export type SubPhrase = { s: number; e: number; w: string[] };
 const MAX_CHARS = 30;
 const MAX_WORDS = 6;
 
+/** Ejaan buat TTS → tulisan di layar (naskah ditulis "atlasnusia dot com" biar dibaca benar). */
+const display = (text: string) => text.replace(/(\S+) dot com\b/gi, "$1.com");
+
 /** Pecah teks jadi frasa pendek: utamakan potong di tanda baca, lalu di batas kata. */
 function phrases(text: string): string[] {
-  const words = text.split(/\s+/).filter(Boolean);
+  const words = display(text).split(/\s+/).filter(Boolean);
   const out: string[][] = [];
   let cur: string[] = [];
   const len = (ws: string[]) => ws.join(" ").length;

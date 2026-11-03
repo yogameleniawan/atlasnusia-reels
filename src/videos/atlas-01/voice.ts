@@ -138,6 +138,10 @@ export const VOICE: VoiceData = {
     {
       "scene": 12,
       "text": "Tulis di kolom komentar, kita buka bareng."
+    },
+    {
+      "scene": 12,
+      "text": "Peta yang sudah terbuka bisa kamu cek di atlasnusia dot com."
     }
   ],
   "sync": null
