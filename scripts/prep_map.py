@@ -19,6 +19,8 @@ Contoh (ATLAS-01, Danau Toba):
   --feature key=ADM2           simpan bentuk satu kabupaten/kota sebagai fitur bernama
   --island key=ADM2:fitur      bagian kabupaten yang ada di dalam fitur lain (pulau di tengah danau)
   --axis fitur                 hitung sumbu terpanjang fitur (buat garis ukur & tulisan di peta)
+  --exclude ADM2               kabupaten yang ikut provinsi lama di Natural Earth tapi sudah pindah provinsi
+                               (misal Bulungan & Malinau: Kaltara, dulu Kaltim)
   --countries A,B              negara tetangga yang digambar gelap (default Malaysia,Singapore,Thailand,Timor-Leste,Papua New Guinea)
 """
 import argparse, json, math, os, sys, urllib.request
@@ -82,6 +84,7 @@ def main():
     ap.add_argument("--feature", action="append", default=[])
     ap.add_argument("--island", action="append", default=[])
     ap.add_argument("--axis", action="append", default=[])
+    ap.add_argument("--exclude", action="append", default=[])
     ap.add_argument("--countries", default="Malaysia,Singapore,Thailand,Timor-Leste,Papua New Guinea")
     a = ap.parse_args()
     lon0, lon1, lat0, lat1 = a.bbox
@@ -104,7 +107,8 @@ def main():
         names = sorted({f["properties"].get("name") for f in feats("admin1") if f["properties"].get("admin") == "Indonesia"})
         sys.exit(f"Provinsi {a.province!r} nggak ketemu. Pilihan: {', '.join(names)}")
     provg = prov[0]
-    in_focus = lambda g: g.representative_point().within(provg)
+    excl = [by[n] for n in a.exclude if n in by]
+    in_focus = lambda g: g.representative_point().within(provg) and not any(g is e for e in excl)
     f_regs = [(n, g) for n, g in regs if in_focus(g)]
     o_regs = [(n, g) for n, g in regs if not in_focus(g)]
     focus = simp(unary_union([g for _, g in f_regs]))
