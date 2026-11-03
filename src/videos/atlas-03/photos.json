@@ -1,0 +1,29 @@
+[
+  {
+    "key": "jam",
+    "title": "File:Bagian jam dan atap dari Jam Gadang di Bukittinggi.jpg",
+    "src": "photos/atlas-03/jam.jpg",
+    "credit": "Foto: Merekayangpeduli · Wikimedia Commons · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Bagian_jam_dan_atap_dari_Jam_Gadang_di_Bukittinggi.jpg"
+  },
+  {
+    "key": "istano",
+    "title": "File:Istano Rajo Basa Pagaruyung.jpg",
+    "src": "photos/atlas-03/istano.jpg",
+    "credit": "Foto: Herusutimbul · Wikimedia Commons · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Istano_Rajo_Basa_Pagaruyung.jpg"
+  },
+  {
+    "key": "rendang",
+    "title": "File:Beef Rendang..JPG",
+    "src": "photos/atlas-03/rendang.jpg",
+    "credit": "Foto: Miansari66 · Wikimedia Commons · CC0",
+    "license": "CC0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "page": "https://commons.wikimedia.org/wiki/File:Beef_Rendang..JPG"
+  }
+]
