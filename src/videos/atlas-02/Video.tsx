@@ -244,7 +244,7 @@ const Ajak: React.FC = () => {
       <ProgressMap t0={k} t1={k + AJAK_MAP} before={["Aceh"]} unlock="Sumatera Selatan" at={AJAK_UNLOCK} />
       <Kinetic mode="blur" t0={k + 0.2} t1={k + 3.8} top={240} size={78} lineHeight={1.14} text="Aceh sudah *terbuka.* Berikutnya pilihan kalian: *Sumsel!*" />
       <Kinetic mode="pop" t0={k + 3.95} t1={k + AJAK_MAP - 0.1} top={240} size={74} lineHeight={1.14} text="Daerahmu berikutnya? Tulis di *komentar!*" />
-      <InitiatorSpotlight t0={INI_AT} t1={k + AJAK_LEN} handle="tamaaa066" comment="Sumsel minn" photo="photos/atlas-02/inisiator.jpg" top={560} />
+      <InitiatorSpotlight t0={INI_AT} t1={k + AJAK_LEN} handle="tamaaa066" comment="Sumsel minn" platform="Instagram" photo="photos/atlas-02/inisiator.jpg" />
       <Kinetic mode="drop" t0={INI_AT + 0.25} t1={k + AJAK_LEN - 0.1} top={230} size={70} lineHeight={1.16} text="Terima kasih *@tamaaa066,* Inisiator Sumatera Selatan dari Instagram!" />
     </>
   );
