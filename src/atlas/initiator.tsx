@@ -221,8 +221,8 @@ export const InitiatorSpotlight: React.FC<{
       <div
         style={{
           position: "absolute",
-          left: 110,
-          right: 110,
+          left: 90,
+          right: 90,
           top: 1150,
           display: "flex",
           alignItems: "center",
@@ -246,11 +246,15 @@ export const InitiatorSpotlight: React.FC<{
           </div>
         </div>
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div style={{ fontSize: 44, lineHeight: 1.2, color: C.ivory, whiteSpace: "nowrap", overflow: "hidden" }}>
-            <b style={{ color: C.goldLight, fontWeight: 700 }}>{handle}</b> {comment.slice(0, typed)}
+          {/* handle di baris sendiri, komentar di bawahnya dan boleh turun baris: komentar panjang nggak terpotong.
+              Sisa komentar yang belum "terketik" tetap dirender transparan supaya tinggi kartu nggak loncat. */}
+          <div style={{ fontSize: 40, lineHeight: 1.15, color: C.goldLight, fontWeight: 700, overflowWrap: "anywhere" }}>{handle}</div>
+          <div style={{ fontSize: comment.length > 34 ? 36 : 42, lineHeight: 1.22, color: C.ivory, marginTop: 4, whiteSpace: "normal", overflowWrap: "anywhere" }}>
+            {comment.slice(0, typed)}
             <span style={{ opacity: typed < comment.length && Math.floor(u * 3) % 2 === 0 ? 1 : 0, color: C.goldLight }}>|</span>
+            <span style={{ color: "transparent" }}>{comment.slice(typed)}</span>
           </div>
-          <div style={{ fontSize: 30, color: C.muted, marginTop: 4 }}>{platform} · komentar pertama</div>
+          <div style={{ fontSize: 28, color: C.muted, marginTop: 6 }}>{platform} · komentar pertama</div>
         </div>
       </div>
     </div>
