@@ -36,7 +36,8 @@ export const InitiatorSpotlight: React.FC<{
   const laurel = ramp(u, 0.55, 1.35);
   const ribbon = expo((u - 0.95) / 0.6);
   const card = spring((u - 1.6) / 0.75);
-  const typed = Math.round(clamp((u - 1.95) / Math.max(0.5, comment.length * 0.06)) * comment.length);
+  const chars = Array.from(comment); // per karakter (emoji tidak terbelah saat mengetik)
+  const typed = Math.round(clamp((u - 1.95) / Math.max(0.5, chars.length * 0.06)) * chars.length);
   const shine = lerp(-1.3, 1.3, ramp(u, 1.1, 1.9));
   const sway = Math.sin(u * 1.6) * 7;
 
@@ -250,9 +251,9 @@ export const InitiatorSpotlight: React.FC<{
               Sisa komentar yang belum "terketik" tetap dirender transparan supaya tinggi kartu nggak loncat. */}
           <div style={{ fontSize: 40, lineHeight: 1.15, color: C.goldLight, fontWeight: 700, overflowWrap: "anywhere" }}>{handle}</div>
           <div style={{ fontSize: comment.length > 34 ? 36 : 42, lineHeight: 1.22, color: C.ivory, marginTop: 4, whiteSpace: "normal", overflowWrap: "anywhere" }}>
-            {comment.slice(0, typed)}
-            <span style={{ opacity: typed < comment.length && Math.floor(u * 3) % 2 === 0 ? 1 : 0, color: C.goldLight }}>|</span>
-            <span style={{ color: "transparent" }}>{comment.slice(typed)}</span>
+            {chars.slice(0, typed).join("")}
+            <span style={{ opacity: typed < chars.length && Math.floor(u * 3) % 2 === 0 ? 1 : 0, color: C.goldLight }}>|</span>
+            <span style={{ visibility: "hidden" }}>{chars.slice(typed).join("")}</span>
           </div>
           <div style={{ fontSize: 28, color: C.muted, marginTop: 6 }}>{platform} · komentar pertama</div>
         </div>
