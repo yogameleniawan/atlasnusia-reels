@@ -88,7 +88,7 @@ src/atlas/              mesin Atlasnusia
   pins.tsx              pin emas memantul + kartu 3D + ilustrasi siluet wilayah
   kinetic.tsx           teks kinetik (mode act/pop/drop/wipe/blur/type/wave + efek per kata) + HookLines
   progress.tsx          ProgressMap: peta 38 provinsi + angka terbuka/sisa (scene Ajak); data indonesia.json
-  hook.tsx              HookStack (gaya hook ATLAS-01); ATLAS-02 pakai HookLines (kinetic.tsx); ATLAS-03 HookClock, ATLAS-04 HookIslands, ATLAS-05 HookRiver, ATLAS-06 HookStamp (di Video.tsx masing-masing); gaya hook diganti tiap episode
+  hook.tsx              HookStack (gaya hook ATLAS-01); ATLAS-02 pakai HookLines (kinetic.tsx); ATLAS-03 HookClock, ATLAS-04 HookIslands, ATLAS-05 HookRiver, ATLAS-06 HookStamp, ATLAS-07 HookOchre (di Video.tsx masing-masing); gaya hook diganti tiap episode
   initiator.tsx         InitiatorSpotlight: apresiasi Inisiator (foto profil hanya dengan izin, komentar asli)
   subtitle.tsx          subtitle berjalan per frasa (buildSubs + Subtitles)
   brand.tsx             simbol, watermark, bumper, bingkai foto (arch/polaroid/woven/round)
@@ -106,6 +106,7 @@ src/videos/atlas-XX/    satu episode: Video.tsx, map.json, photos.json, naskah-d
 | ATLAS-04 | Sulawesi Tenggara: kabupaten yang namanya gabungan empat pulau (Wakatobi), Inisiator @resthyanaaaa | ±47 dtk (tanpa voice) |
 | ATLAS-05 | Kalimantan Timur: lumba-lumba yang hidup di sungai (pesut Mahakam), Inisiator @mhpratama30 | ±47 dtk (tanpa voice) |
 | ATLAS-06 | Sumatera Utara: danau di atas pulau di tengah danau (Toba, Samosir, Sidihoni), Inisiator @ridoeffendi_ | ±53 dtk (tanpa voice) |
+| ATLAS-07 | Sulawesi Selatan: lukisan bercerita tertua di dunia (Leang Karampuang, Maros), Inisiator @hendri.lhendri | ±51 dtk (tanpa voice) |
 
 ## Sumber data & lisensi
 

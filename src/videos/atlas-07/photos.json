@@ -1,0 +1,38 @@
+[
+  {
+    "key": "gua",
+    "title": "File:Karampuang, a cave which has world's oldest cave painting.jpg",
+    "src": "photos/atlas-07/gua.jpg",
+    "credit": "Foto: Anhar Karim · Wikimedia Commons · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Karampuang,_a_cave_which_has_world%27s_oldest_cave_painting.jpg"
+  },
+  {
+    "key": "pinisi",
+    "title": "File:Pembuatan Kapal Pinisi Tradisional di Bulukumba 04.jpg",
+    "src": "photos/atlas-07/pinisi.jpg",
+    "credit": "Foto: Iripseudocorus · Wikimedia Commons · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pembuatan_Kapal_Pinisi_Tradisional_di_Bulukumba_04.jpg"
+  },
+  {
+    "key": "tongkonan",
+    "title": "File:Rumah Adat Tongkonan (Toraja) 01.jpg",
+    "src": "photos/atlas-07/tongkonan.jpg",
+    "credit": "Foto: Ribkha Tandepadang · Wikimedia Commons · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rumah_Adat_Tongkonan_(Toraja)_01.jpg"
+  },
+  {
+    "key": "coto",
+    "title": "File:Coto Makassar-dish.JPG",
+    "src": "photos/atlas-07/coto.jpg",
+    "credit": "Foto: Lofor · Wikimedia Commons · CC BY 3.0",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Coto_Makassar-dish.JPG"
+  }
+]
